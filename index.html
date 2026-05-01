@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giramundi | Data, Reporting & Transformation Digitale</title>
+  <meta name="description" content="Giramundi accompagne les entreprises dans l’optimisation des processus, la data analytics, le reporting et la transformation digitale." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #14213d;
+      background: #f7f9fc;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e6ebf2;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #003b73;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 15px;
+      color: #4a5568;
+    }
+
+    .nav-links a:hover {
+      color: #0077b6;
+    }
+
+    .hero {
+      padding: 90px 0 80px;
+      background: linear-gradient(135deg, #ffffff 0%, #eaf6ff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .tagline {
+      display: inline-block;
+      color: #0077b6;
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.08;
+      margin-bottom: 24px;
+      color: #0b2545;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #4a5568;
+      margin-bottom: 34px;
+      max-width: 680px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #0077b6;
+      color: white;
+      box-shadow: 0 10px 24px rgba(0, 119, 182, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: #005f92;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #0077b6;
+      border: 1px solid #cfe8f7;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(12, 52, 89, 0.12);
+      border: 1px solid #e6eef6;
+    }
+
+    .hero-card h3 {
+      margin-bottom: 18px;
+      color: #0b2545;
+    }
+
+    .metric {
+      padding: 16px 0;
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    .metric:last-child {
+      border-bottom: none;
+    }
+
+    .metric strong {
+      display: block;
+      color: #0077b6;
+      font-size: 22px;
+      margin-bottom: 3px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
+
+    .section-title span {
+      color: #0077b6;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-top: 10px;
+      color: #0b2545;
+    }
+
+    .section-title p {
+      margin-top: 14px;
+      color: #4a5568;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e6ebf2;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 32px rgba(12, 52, 89, 0.06);
+    }
+
+    .card .icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #0b2545;
+      font-size: 21px;
+    }
+
+    .card p, .card li {
+      color: #4a5568;
+      font-size: 15.5px;
+    }
+
+    .card ul {
+      margin-top: 14px;
+      padding-left: 18px;
+    }
+
+    .dark {
+      background: #0b2545;
+      color: white;
+    }
+
+    .dark h2, .dark h3 {
+      color: white;
+    }
+
+    .dark p, .dark li {
+      color: #dbe7f3;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .step strong {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      background: #00a8e8;
+      margin-bottom: 14px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .list-box {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      border: 1px solid #e6ebf2;
+    }
+
+    .list-box ul {
+      list-style: none;
+    }
+
+    .list-box li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eef2f7;
+      color: #4a5568;
+    }
+
+    .list-box li:last-child {
+      border-bottom: none;
+    }
+
+    .list-box li::before {
+      content: "✓";
+      color: #0077b6;
+      font-weight: 800;
+      margin-right: 10px;
+    }
+
+    .contact {
+      background: linear-gradient(135deg, #0077b6, #003b73);
+      color: white;
+      text-align: center;
+      border-radius: 28px;
+      padding: 52px 28px;
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact p {
+      color: #eaf6ff;
+      max-width: 680px;
+      margin: 14px auto 28px;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .cards,
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 64px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="logo.png" alt="Giramundi logo" />
+        Giramundi
+      </div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#methode">Méthode</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="tagline">Data • Reporting • Processus</span>
+          <h1>Transformez vos données et vos processus en leviers de performance.</h1>
+          <p>
+            Giramundi accompagne les entreprises dans la transformation digitale, l’automatisation du reporting,
+            la data analytics et l’optimisation des processus métier.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Discuter de votre besoin</a>
+            <a class="btn btn-secondary" href="#services">Voir les services</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Domaines d’intervention</h3>
+          <div class="metric">
+            <strong>01</strong>
+            Data analytics, KPI et dashboards
+          </div>
+          <div class="metric">
+            <strong>02</strong>
+            Automatisation du reporting
+          </div>
+          <div class="metric">
+            <strong>03</strong>
+            GED, flux documentaires et processus
+          </div>
+          <div class="metric">
+            <strong>04</strong>
+            CRM et outils de transformation digitale
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <span>Services</span>
+          <h2>Des offres simples pour gagner en visibilité, efficacité et pilotage.</h2>
+          <p>Des interventions courtes, concrètes et adaptées aux besoins des PME, équipes métier et directions opérationnelles.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">📊</div>
+            <h3>Data & Reporting</h3>
+            <p>Création de tableaux de bord et mise en place d’indicateurs pour suivre la performance.</p>
+            <ul>
+              <li>Power BI / Excel</li>
+              <li>KPI & dashboards</li>
+              <li>Reporting automatisé</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Automatisation</h3>
+            <p>Réduction des tâches manuelles grâce à l’automatisation des extractions et reportings.</p>
+            <ul>
+              <li>Power Query</li>
+              <li>Python</li>
+              <li>Flux de données simples</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="icon">📁</div>
+            <h3>Processus & GED</h3>
+            <p>Analyse et optimisation des flux métier, documentaires et circuits de validation.</p>
+            <ul>
+              <li>GED / ECM</li>
+              <li>Analyse des processus</li>
+              <li>Optimisation des flux</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="methode" class="dark">
+      <div class="container">
+        <div class="section-title">
+          <span>Méthode</span>
+          <h2>Une approche pragmatique, orientée résultats.</h2>
+          <p>Nous partons du besoin métier pour construire des solutions simples, mesurables et utilisables.</p>
+        </div>
+
+        <div class="process">
+          <div class="step">
+            <strong>1</strong>
+            <h3>Cadrer</h3>
+            <p>Comprendre les besoins, les données disponibles et les objectifs métier.</p>
+          </div>
+          <div class="step">
+            <strong>2</strong>
+            <h3>Structurer</h3>
+            <p>Nettoyer, organiser et fiabiliser les données ou les processus existants.</p>
+          </div>
+          <div class="step">
+            <strong>3</strong>
+            <h3>Automatiser</h3>
+            <p>Réduire les tâches répétitives et sécuriser les flux de reporting.</p>
+          </div>
+          <div class="step">
+            <strong>4</strong>
+            <h3>Piloter</h3>
+            <p>Mettre en place des indicateurs et supports de décision clairs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="container split">
+        <div class="section-title">
+          <span>Expertise</span>
+          <h2>Un profil hybride entre métier, données et outils digitaux.</h2>
+          <p>
+            Giramundi s’appuie sur une expérience en gestion documentaire, data analytics, reporting et optimisation des processus,
+            avec une ouverture vers les environnements CRM et Salesforce.
+          </p>
+        </div>
+        <div class="list-box">
+          <ul>
+            <li>Gestion documentaire : GED / ECM, RAD / LAD</li>
+            <li>Analytics & intégration : SQL, Talend, Python</li>
+            <li>Reporting : Power BI, Excel avancé, Power Query</li>
+            <li>Processus : cadrage, analyse des besoins, amélioration continue</li>
+            <li>CRM : Salesforce Administration en préparation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="contact" id="contact">
+          <h2>Vous avez un besoin en data, reporting ou optimisation de processus ?</h2>
+          <p>
+            Parlons de votre contexte, de vos données et des actions concrètes à mettre en place pour améliorer votre pilotage.
+          </p>
+          <a class="btn btn-secondary" href="mailto:contact@giramundi.com">contact@giramundi.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Giramundi — Data, Digital & Performance
+    </div>
+  </footer>
+</body>
+</html>

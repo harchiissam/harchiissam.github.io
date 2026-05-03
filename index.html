@@ -3,36 +3,848 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giramundi | Data • Digital • Performance</title>
-  <meta name="description" content="Giramundi accompagne les entreprises dans l'automatisation des processus, la data visualisation, le reporting, l'intégration de données et la gestion documentaire." />
+  <title>Giramundi | Automation, Reporting & Data</title>
+  <meta name="description" content="Giramundi accompagne les entreprises dans l'automatisation des processus, le reporting, la data visualisation, l'intégration de données et l'optimisation des workflows." />
+
   <style>
-    :root{--primary:#003b7a;--secondary:#00a7d8;--dark:#071827;--text:#344155;--light:#f5f8fb;--white:#fff;--border:#dbe5ef;--shadow:0 20px 45px rgba(7,24,39,.12)}
-    *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--white);line-height:1.6}a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}.navbar{height:82px;display:flex;align-items:center;justify-content:space-between}.logo img{height:150px;width:auto}nav{display:flex;gap:28px;font-size:15px;font-weight:700;color:var(--dark)}nav a:hover{color:var(--secondary)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:999px;font-weight:800;transition:.25s ease;border:1px solid transparent}.btn-primary{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;box-shadow:0 12px 24px rgba(0,91,165,.22)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(0,91,165,.3)}.btn-outline{color:var(--primary);border-color:var(--border);background:#fff}
-    .hero{position:relative;overflow:hidden;padding:96px 0 92px;background:radial-gradient(circle at 85% 15%,rgba(0,167,216,.18),transparent 30%),linear-gradient(135deg,#fff 0%,#eef6fb 48%,#f8fbfd 100%)}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}.eyebrow{display:inline-block;color:var(--secondary);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:13px;margin-bottom:18px}h1{color:var(--dark);font-size:clamp(38px,5vw,64px);line-height:1.06;letter-spacing:-1.5px;margin-bottom:24px}.hero p{font-size:19px;max-width:680px;margin-bottom:32px}.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
-    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px}.metric{background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 10px 25px rgba(7,24,39,.06)}.metric strong{display:block;font-size:24px;color:var(--primary)}.metric span{font-size:13px;color:#667085}.hero-card{background:rgba(255,255,255,.9);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);padding:32px}.hero-card h3{color:var(--dark);font-size:24px;margin-bottom:18px}.check-list{list-style:none;display:grid;gap:14px}.check-list li{display:flex;gap:12px;align-items:flex-start;font-weight:700}.check-list li:before{content:'✓';color:#fff;background:var(--secondary);width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 24px;font-size:14px;font-weight:900}
-    section{padding:86px 0}.section-title{text-align:center;max-width:780px;margin:0 auto 48px}.section-title span{color:var(--secondary);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px}h2{color:var(--dark);font-size:clamp(30px,4vw,44px);line-height:1.12;margin:12px 0 14px;letter-spacing:-.8px}.services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.service-card{border:1px solid var(--border);background:#fff;border-radius:24px;padding:30px;box-shadow:0 10px 30px rgba(7,24,39,.06);transition:.25s ease}.service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.icon{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,rgba(0,59,122,.12),rgba(0,167,216,.18));display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:26px;margin-bottom:22px}.service-card h3{color:var(--dark);font-size:21px;margin-bottom:12px}.service-card p{margin-bottom:18px}.service-card ul{padding-left:18px;color:#526173;font-size:15px}.service-card li{margin-bottom:8px}
-    .band{background:var(--dark);color:#fff;padding:72px 0}.band-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}.band h2{color:#fff}.band p{color:#cdd7e2}.process{display:grid;gap:18px}.step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px}.step strong{color:var(--secondary);display:block;margin-bottom:6px}.sectors{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.sector{background:var(--light);border:1px solid var(--border);border-radius:18px;padding:22px;text-align:center;font-weight:800;color:var(--dark)}.cta{background:radial-gradient(circle at 15% 20%,rgba(0,167,216,.22),transparent 32%),linear-gradient(135deg,var(--primary),#061d38);color:#fff;border-radius:34px;padding:64px;text-align:center;box-shadow:var(--shadow)}.cta h2{color:#fff}.cta p{max-width:720px;margin:0 auto 28px;color:#dce8f4;font-size:18px}footer{background:#06111f;color:#b8c7d8;padding:36px 0}.footer-grid{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.footer-grid strong{color:#fff}
-    @media(max-width:900px){nav{display:none}.hero-grid,.band-grid{grid-template-columns:1fr}.services{grid-template-columns:1fr}.metrics,.sectors{grid-template-columns:1fr 1fr}.cta{padding:42px 24px}}@media(max-width:560px){.metrics,.sectors{grid-template-columns:1fr}.navbar{height:74px}.logo img{height:42px}}
+    :root {
+      --primary: #003b7a;
+      --primary-dark: #06213f;
+      --secondary: #00a7d8;
+      --dark: #071827;
+      --text: #344155;
+      --muted: #667085;
+      --light: #f5f8fb;
+      --white: #ffffff;
+      --border: #dbe5ef;
+      --shadow: 0 18px 42px rgba(7, 24, 39, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1160px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo img {
+      height: 150px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 12px 24px rgba(0, 91, 165, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(0, 91, 165, 0.30);
+    }
+
+    .btn-outline {
+      color: var(--primary);
+      border-color: var(--border);
+      background: white;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 88px;
+      background:
+        radial-gradient(circle at 88% 18%, rgba(0, 167, 216, 0.20), transparent 31%),
+        radial-gradient(circle at 8% 82%, rgba(0, 59, 122, 0.10), transparent 28%),
+        linear-gradient(135deg, #ffffff 0%, #eef6fb 52%, #f8fbfd 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--secondary);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.06;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      max-width: 700px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 760px;
+    }
+
+    .proof-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(7, 24, 39, 0.06);
+    }
+
+    .proof-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .proof-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+
+    .hero-panel h3 {
+      color: var(--dark);
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 15px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-weight: 700;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: white;
+      background: var(--secondary);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 24px;
+      font-size: 14px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 48px;
+    }
+
+    .section-title span {
+      color: var(--secondary);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+    }
+
+    h2 {
+      color: var(--dark);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.12;
+      margin: 12px 0 14px;
+      letter-spacing: -0.8px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(7,24,39,0.06);
+      transition: .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: .25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,59,122,.12), rgba(0,167,216,.18));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      color: var(--dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      margin-bottom: 18px;
+      color: #526173;
+    }
+
+    .service-card ul {
+      padding-left: 18px;
+      color: #526173;
+      font-size: 15px;
+    }
+
+    .service-card li {
+      margin-bottom: 8px;
+    }
+
+    .outcome {
+      background: var(--light);
+    }
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .outcome-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .outcome-box h3 {
+      color: var(--dark);
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .benefits {
+      display: grid;
+      gap: 18px;
+    }
+
+    .benefit {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .benefit strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .method {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    .method h2 {
+      color: white;
+    }
+
+    .method .section-title p {
+      color: #cdd7e2;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .step span {
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 167, 216, .18);
+      color: var(--secondary);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .step p {
+      color: #cdd7e2;
+      font-size: 15px;
+    }
+
+    .tools {
+      padding: 48px 0;
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tools-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tools-title {
+      color: var(--muted);
+      font-weight: 800;
+      margin-right: 12px;
+    }
+
+    .tag {
+      background: var(--light);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+
+    .sectors {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .sector {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .cta {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(0,167,216,.24), transparent 32%),
+        linear-gradient(135deg, var(--primary), #061d38);
+      color: white;
+      border-radius: 34px;
+      padding: 64px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      color: white;
+    }
+
+    .cta p {
+      max-width: 740px;
+      margin: 0 auto 28px;
+      color: #dce8f4;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #06111f;
+      color: #b8c7d8;
+      padding: 36px 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-grid strong {
+      color: white;
+    }
+
+    @media (max-width: 960px) {
+      nav {
+        display: none;
+      }
+
+      .hero-grid,
+      .outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .steps,
+      .proof,
+      .sectors {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .navbar {
+        height: 76px;
+      }
+
+      .logo img {
+        height: 58px;
+      }
+
+      .proof,
+      .steps,
+      .sectors {
+        grid-template-columns: 1fr;
+      }
+
+  
+    .sectors {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .sector {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .cta {
+        padding: 42px 24px;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+    }
   </style>
 </head>
+
 <body>
-<header><div class="container navbar"><a href="#" class="logo" aria-label="Accueil Giramundi"><img src="logo.png" alt="Logo Giramundi" /></a><nav><a href="#solutions">Solutions</a><a href="#approche">Approche</a><a href="#secteurs">Secteurs</a><a href="#contact">Contact</a></nav><a href="#contact" class="btn btn-primary">Parler de votre projet</a></div></header>
-<main>
-<section class="hero"><div class="container hero-grid"><div><span class="eyebrow">Data • Digital • Performance</span><h1>Automatisez vos processus. Valorisez vos données. Pilotez votre performance.</h1><p>Giramundi accompagne les entreprises dans la mise en place de solutions concrètes d’automatisation, de reporting, de data visualisation, d’intégration de données et d’optimisation des processus métiers.</p><div class="hero-actions"><a href="#solutions" class="btn btn-primary">Découvrir les solutions</a><a href="#contact" class="btn btn-outline">Demander un échange</a></div><div class="metrics"><div class="metric"><strong>+</strong><span>Gain de temps sur les tâches répétitives</span></div><div class="metric"><strong>KPI</strong><span>Tableaux de bord clairs et exploitables</span></div><div class="metric"><strong>360°</strong><span>Processus, data, reporting et automation</span></div></div></div><div class="hero-card"><h3>Nos leviers d’impact</h3><ul class="check-list"><li>Automatisation des workflows et du reporting</li><li>Tableaux de bord Power BI orientés décision</li><li>Intégration et structuration des flux de données</li><li>Optimisation des processus métiers et documentaires</li><li>Accompagnement opérationnel, clair et mesurable</li></ul></div></div></section>
-<section id="solutions"><div class="container"><div class="section-title"><span>Solutions</span><h2>Des services conçus pour améliorer l’efficacité opérationnelle</h2><p>Une approche pragmatique : comprendre vos processus, fiabiliser vos données, automatiser les tâches récurrentes et rendre la performance visible.</p></div><div class="services">
-<article class="service-card"><div class="icon">⚙️</div><h3>Automatisation des processus</h3><p>Réduction des tâches manuelles grâce à des workflows simples, robustes et évolutifs.</p><ul><li>Automatisation avec Make et Zapier</li><li>Notifications, synchronisations et validations</li><li>Automatisation du reporting récurrent</li></ul></article>
-<article class="service-card"><div class="icon">📊</div><h3>Data visualisation & reporting</h3><p>Création de tableaux de bord lisibles pour suivre les indicateurs clés et décider plus vite.</p><ul><li>Dashboards Power BI</li><li>Suivi KPI : ventes, trafic, conversion, activité</li><li>Data storytelling et reporting exécutif</li></ul></article>
-<article class="service-card"><div class="icon">🔄</div><h3>Intégration de données</h3><p>Connexion, transformation et structuration des données issues de plusieurs sources.</p><ul><li>Flux de données et ETL</li><li>Talend, Power Query, SQL</li><li>Fiabilisation et préparation des données</li></ul></article>
-<article class="service-card"><div class="icon">🗂️</div><h3>Gestion documentaire ECM/GED</h3><p>Optimisation des circuits documentaires, de la capture à la mise à disposition de l’information.</p><ul><li>ECM/GED, RAD/LAD</li><li>Analyse des processus documentaires</li><li>Accompagnement au changement</li></ul></article>
-<article class="service-card"><div class="icon">📈</div><h3>Pilotage de la performance</h3><p>Structuration d’indicateurs utiles pour améliorer la visibilité et le suivi opérationnel.</p><ul><li>Définition et suivi des KPI</li><li>Analyse des écarts et points de friction</li><li>Tableaux de bord métier et direction</li></ul></article>
-<article class="service-card"><div class="icon">🧭</div><h3>Conseil & optimisation métier</h3><p>Une vision transverse entre métier, données et outils pour transformer vos besoins en solutions.</p><ul><li>Recueil et formalisation des besoins</li><li>Cartographie et amélioration des processus</li><li>Support, formation et conduite du changement</li></ul></article>
-</div></div></section>
-<section id="approche" class="band"><div class="container band-grid"><div><span class="eyebrow">Approche</span><h2>Une méthode orientée résultats, pas seulement outils</h2><p>Giramundi intervient avec une logique simple : identifier les irritants, structurer les données, automatiser les actions répétitives et livrer des indicateurs exploitables pour les équipes métier.</p></div><div class="process"><div class="step"><strong>01 — Diagnostic</strong>Analyse des processus, besoins métier, données disponibles et points de blocage.</div><div class="step"><strong>02 — Conception</strong>Définition des workflows, KPI, tableaux de bord et flux de données nécessaires.</div><div class="step"><strong>03 — Mise en œuvre</strong>Création des solutions de reporting, d’intégration ou d’automatisation.</div><div class="step"><strong>04 — Adoption</strong>Formation, documentation, suivi de la qualité et amélioration continue.</div></div></div></section>
-<section id="secteurs"><div class="container"><div class="section-title"><span>Secteurs & cas d’usage</span><h2>Des solutions adaptées aux besoins opérationnels</h2><p>Les services Giramundi s’adaptent aux PME, indépendants, équipes commerciales, directions opérationnelles, services support et organisations en transformation.</p></div><div class="sectors"><div class="sector">PME & TPE</div><div class="sector">Services commerciaux</div><div class="sector">Marketing & digital</div><div class="sector">Gestion documentaire</div><div class="sector">Reporting direction</div><div class="sector">Opérations</div><div class="sector">CRM & relation client</div><div class="sector">Support métier</div></div></div></section>
-<section id="contact"><div class="container"><div class="cta"><h2>Un reporting trop manuel ? Des données dispersées ? Des processus à fluidifier ?</h2><p>Parlons de vos objectifs et identifions les automatisations, tableaux de bord ou flux de données qui peuvent générer rapidement de la valeur.</p><a href="mailto:contact@giramundi.com" class="btn btn-primary">contact@giramundi.com</a></div></div></section>
-</main>
-<footer><div class="container footer-grid"><div><strong>Giramundi</strong><br />Data • Digital • Performance</div><div>© 2026 Giramundi. Tous droits réservés.</div></div></footer>
+  <header>
+    <div class="container navbar">
+      <a href="#" class="logo" aria-label="Accueil Giramundi">
+        <img src="logo.png" alt="Logo Giramundi" />
+      </a>
+
+      <nav>
+        <a href="#solutions">Solutions</a>
+        <a href="#benefices">Bénéfices</a>
+        <a href="#approche">Approche</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary">Discuter d’un besoin</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Freelance data, automation & reporting</span>
+          <h1>Des solutions simples pour automatiser, piloter et gagner du temps.</h1>
+          <p>
+            Giramundi aide les entreprises à réduire les tâches manuelles, fiabiliser leurs données
+            et créer des reportings clairs pour mieux suivre leur activité au quotidien.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#solutions" class="btn btn-primary">Voir les services</a>
+            <a href="#contact" class="btn btn-outline">Me contacter</a>
+          </div>
+
+          <div class="proof">
+            <div class="proof-card">
+              <strong>Gain de temps</strong>
+              <span>Moins de saisie manuelle et de fichiers dispersés</span>
+            </div>
+            <div class="proof-card">
+              <strong>Clarté</strong>
+              <span>Des indicateurs visibles et exploitables</span>
+            </div>
+            <div class="proof-card">
+              <strong>Action</strong>
+              <span>Des solutions concrètes, rapides à mettre en place</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <h3>J’interviens sur vos besoins concrets</h3>
+          <ul class="check-list">
+            <li>Automatiser un reporting récurrent</li>
+            <li>Créer un tableau de bord de pilotage</li>
+            <li>Centraliser et fiabiliser vos données</li>
+            <li>Connecter plusieurs outils entre eux</li>
+            <li>Optimiser un processus métier ou documentaire</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="solutions">
+      <div class="container">
+        <div class="section-title">
+          <span>Solutions</span>
+          <h2>Des services pensés pour des résultats visibles rapidement</h2>
+          <p>
+            Une approche freelance, directe et opérationnelle : comprendre votre besoin,
+            construire une solution utile, puis vous rendre autonome.
+          </p>
+        </div>
+
+        <div class="services">
+          <article class="service-card">
+            <div class="icon">⚙️</div>
+            <h3>Automatisation des processus</h3>
+            <p>Réduire les tâches répétitives et fluidifier les échanges entre vos outils.</p>
+            <ul>
+              <li>Automatisation des workflows</li>
+              <li>Notifications et synchronisations</li>
+              <li>Réduction des saisies manuelles</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">📊</div>
+            <h3>Reporting & tableaux de bord</h3>
+            <p>Transformer vos données en indicateurs lisibles pour suivre votre activité.</p>
+            <ul>
+              <li>Tableaux de bord de pilotage</li>
+              <li>Suivi des KPI clés</li>
+              <li>Reporting mensuel ou hebdomadaire</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🔄</div>
+            <h3>Intégration de données</h3>
+            <p>Regrouper, organiser et fiabiliser les données issues de plusieurs sources.</p>
+            <ul>
+              <li>Centralisation des informations</li>
+              <li>Nettoyage et structuration</li>
+              <li>Préparation pour reporting</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🗂️</div>
+            <h3>Gestion documentaire</h3>
+            <p>Améliorer la circulation, le traitement et le suivi des documents métier.</p>
+            <ul>
+              <li>Optimisation des circuits documentaires</li>
+              <li>Analyse des processus GED/ECM</li>
+              <li>Accompagnement utilisateurs</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">📈</div>
+            <h3>Analyse KPI & performance</h3>
+            <p>Identifier les indicateurs utiles pour mieux comprendre votre activité.</p>
+            <ul>
+              <li>Suivi ventes, trafic, conversion</li>
+              <li>Analyse des écarts</li>
+              <li>Aide à la décision</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🧭</div>
+            <h3>Optimisation des workflows</h3>
+            <p>Clarifier vos étapes de travail et supprimer les frictions inutiles.</p>
+            <ul>
+              <li>Cartographie de processus</li>
+              <li>Identification des irritants</li>
+              <li>Proposition de solutions simples</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefices" class="outcome">
+      <div class="container outcome-grid">
+        <div>
+          <span class="eyebrow">Bénéfices client</span>
+          <h2>Ce que vous gagnez concrètement</h2>
+          <p>
+            L’objectif n’est pas d’ajouter de la complexité, mais de simplifier votre quotidien :
+            moins de tâches manuelles, moins d’erreurs, plus de visibilité et plus de temps pour décider.
+          </p>
+        </div>
+
+        <div class="benefits">
+          <div class="benefit">
+            <strong>Moins de temps perdu</strong>
+            Automatisation des tâches répétitives et réduction des manipulations manuelles.
+          </div>
+          <div class="benefit">
+            <strong>Des données plus fiables</strong>
+            Structuration, nettoyage et centralisation des informations utiles.
+          </div>
+          <div class="benefit">
+            <strong>Une meilleure visibilité</strong>
+            Tableaux de bord clairs pour suivre les indicateurs importants.
+          </div>
+          <div class="benefit">
+            <strong>Une solution adaptée</strong>
+            Des livrables simples, compréhensibles et utilisables par vos équipes.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approche" class="method">
+      <div class="container">
+        <div class="section-title">
+          <span>Approche</span>
+          <h2>Une méthode simple, structurée et orientée action</h2>
+          <p>
+            Chaque mission commence par vos besoins réels, pas par les outils.
+            Les technologies viennent ensuite pour construire la solution la plus adaptée.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span>1</span>
+            <h3>Comprendre</h3>
+            <p>Analyse de vos processus, données, irritants et objectifs.</p>
+          </div>
+          <div class="step">
+            <span>2</span>
+            <h3>Structurer</h3>
+            <p>Définition des indicateurs, flux, règles et priorités.</p>
+          </div>
+          <div class="step">
+            <span>3</span>
+            <h3>Construire</h3>
+            <p>Mise en place du reporting, de l’automatisation ou de l’intégration.</p>
+          </div>
+          <div class="step">
+            <span>4</span>
+            <h3>Transmettre</h3>
+            <p>Documentation, accompagnement et autonomie des utilisateurs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="secteurs">
+      <div class="container">
+        <div class="section-title">
+          <span>Secteurs & cas d’usage</span>
+          <h2>Des solutions adaptées aux besoins opérationnels</h2>
+          <p>
+            Les services Giramundi s’adaptent aux PME, indépendants, équipes commerciales,
+            directions opérationnelles, services support et organisations en transformation.
+          </p>
+        </div>
+
+        <div class="sectors">
+          <div class="sector">PME & TPE</div>
+          <div class="sector">Services commerciaux</div>
+          <div class="sector">Marketing & digital</div>
+          <div class="sector">Gestion documentaire</div>
+          <div class="sector">Reporting direction</div>
+          <div class="sector">Opérations</div>
+          <div class="sector">CRM & relation client</div>
+          <div class="sector">Support métier</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <h2>Un reporting trop manuel ? Des données dispersées ? Des processus à fluidifier ?</h2>
+          <p>
+            Parlons de vos objectifs et identifions les automatisations, tableaux de bord
+            ou flux de données qui peuvent générer rapidement de la valeur.
+          </p>
+          <a href="mailto:contact@giramundi.com" class="btn btn-primary">contact@giramundi.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>Giramundi</strong><br />
+        Data • Digital • Performance
+      </div>
+      <div>
+        © 2026 Giramundi. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

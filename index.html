@@ -1,850 +1,594 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giramundi | Automation, Reporting & Data</title>
-  <meta name="description" content="Giramundi accompagne les entreprises dans l'automatisation des processus, le reporting, la data visualisation, l'intégration de données et l'optimisation des workflows." />
-
-  <style>
-    :root {
-      --primary: #003b7a;
-      --primary-dark: #06213f;
-      --secondary: #00a7d8;
-      --dark: #071827;
-      --text: #344155;
-      --muted: #667085;
-      --light: #f5f8fb;
-      --white: #ffffff;
-      --border: #dbe5ef;
-      --shadow: 0 18px 42px rgba(7, 24, 39, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.65;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: min(1160px, 92%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      height: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo img {
-      height: 150px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    nav a:hover {
-      color: var(--secondary);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 22px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: 0.25s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      box-shadow: 0 12px 24px rgba(0, 91, 165, 0.22);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(0, 91, 165, 0.30);
-    }
-
-    .btn-outline {
-      color: var(--primary);
-      border-color: var(--border);
-      background: white;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--secondary);
-      color: var(--secondary);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 96px 0 88px;
-      background:
-        radial-gradient(circle at 88% 18%, rgba(0, 167, 216, 0.20), transparent 31%),
-        radial-gradient(circle at 8% 82%, rgba(0, 59, 122, 0.10), transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #eef6fb 52%, #f8fbfd 100%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 52px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--secondary);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      color: var(--dark);
-      font-size: clamp(38px, 5vw, 64px);
-      line-height: 1.06;
-      letter-spacing: -1.5px;
-      margin-bottom: 24px;
-    }
-
-    .hero p {
-      font-size: 19px;
-      max-width: 700px;
-      margin-bottom: 32px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
-    .proof {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 760px;
-    }
-
-    .proof-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(7, 24, 39, 0.06);
-    }
-
-    .proof-card strong {
-      display: block;
-      color: var(--primary);
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-
-    .proof-card span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .hero-panel {
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 32px;
-    }
-
-    .hero-panel h3 {
-      color: var(--dark);
-      font-size: 24px;
-      margin-bottom: 18px;
-    }
-
-    .check-list {
-      list-style: none;
-      display: grid;
-      gap: 15px;
-    }
-
-    .check-list li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      font-weight: 700;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      color: white;
-      background: var(--secondary);
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 24px;
-      font-size: 14px;
-      font-weight: 900;
-      margin-top: 2px;
-    }
-
-    section {
-      padding: 84px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto 48px;
-    }
-
-    .section-title span {
-      color: var(--secondary);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: 13px;
-    }
-
-    h2 {
-      color: var(--dark);
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.12;
-      margin: 12px 0 14px;
-      letter-spacing: -0.8px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .service-card {
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(7,24,39,0.06);
-      transition: .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 4px;
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      opacity: 0;
-      transition: .25s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .service-card:hover::after {
-      opacity: 1;
-    }
-
-    .icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(0,59,122,.12), rgba(0,167,216,.18));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 26px;
-      margin-bottom: 22px;
-    }
-
-    .service-card h3 {
-      color: var(--dark);
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      margin-bottom: 18px;
-      color: #526173;
-    }
-
-    .service-card ul {
-      padding-left: 18px;
-      color: #526173;
-      font-size: 15px;
-    }
-
-    .service-card li {
-      margin-bottom: 8px;
-    }
-
-    .outcome {
-      background: var(--light);
-    }
-
-    .outcome-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .outcome-box {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 34px;
-      box-shadow: var(--shadow);
-    }
-
-    .outcome-box h3 {
-      color: var(--dark);
-      font-size: 25px;
-      margin-bottom: 20px;
-    }
-
-    .benefits {
-      display: grid;
-      gap: 18px;
-    }
-
-    .benefit {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px;
-    }
-
-    .benefit strong {
-      color: var(--primary);
-      display: block;
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .method {
-      background: var(--primary-dark);
-      color: white;
-    }
-
-    .method h2 {
-      color: white;
-    }
-
-    .method .section-title p {
-      color: #cdd7e2;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .step {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 20px;
-      padding: 24px;
-    }
-
-    .step span {
-      display: inline-flex;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 167, 216, .18);
-      color: var(--secondary);
-      font-weight: 900;
-      margin-bottom: 16px;
-    }
-
-    .step h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-
-    .step p {
-      color: #cdd7e2;
-      font-size: 15px;
-    }
-
-    .tools {
-      padding: 48px 0;
-      background: white;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .tools-grid {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .tools-title {
-      color: var(--muted);
-      font-weight: 800;
-      margin-right: 12px;
-    }
-
-    .tag {
-      background: var(--light);
-      border: 1px solid var(--border);
-      color: var(--primary);
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-
-    .sectors {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .sector {
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      text-align: center;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .cta {
-      background:
-        radial-gradient(circle at 15% 20%, rgba(0,167,216,.24), transparent 32%),
-        linear-gradient(135deg, var(--primary), #061d38);
-      color: white;
-      border-radius: 34px;
-      padding: 64px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .cta h2 {
-      color: white;
-    }
-
-    .cta p {
-      max-width: 740px;
-      margin: 0 auto 28px;
-      color: #dce8f4;
-      font-size: 18px;
-    }
-
-    footer {
-      background: #06111f;
-      color: #b8c7d8;
-      padding: 36px 0;
-    }
-
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-grid strong {
-      color: white;
-    }
-
-    @media (max-width: 960px) {
-      nav {
-        display: none;
-      }
-
-      .hero-grid,
-      .outcome-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .services {
-        grid-template-columns: 1fr;
-      }
-
-      .steps,
-      .proof,
-      .sectors {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 580px) {
-      .navbar {
-        height: 76px;
-      }
-
-      .logo img {
-        height: 58px;
-      }
-
-      .proof,
-      .steps,
-      .sectors {
-        grid-template-columns: 1fr;
-      }
-
-  
-    .sectors {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .sector {
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      text-align: center;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .cta {
-        padding: 42px 24px;
-      }
-
-      .hero {
-        padding: 70px 0;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Giramundi | Conseil Dynamics 365, Power Platform & Transformation digitale</title>
+<meta name="description" content="Giramundi accompagne les entreprises dans leurs projets Microsoft Dynamics 365 CRM, Power Platform, Business Analysis, intégration de données et gestion documentaire ECM.">
+<meta name="theme-color" content="#071b32">
+
+<style>
+:root {
+  --navy:#071b32;
+  --navy2:#0d2948;
+  --blue:#087fbd;
+  --cyan:#20c5df;
+  --ink:#15283e;
+  --muted:#617286;
+  --pale:#f2f7fb;
+  --line:#dfebf2;
+  --white:#fff;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  font:16px/1.7 system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  color:var(--ink);
+  background:white;
+}
+a {text-decoration:none;color:inherit}
+button {font:inherit}
+.wrap {width:min(1180px,90%);margin:auto}
+.header {
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:#ffffffed;
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.brand {display:flex;align-items:center;max-width:230px}
+.brand img {display:block;max-width:100%;max-height:70px;object-fit:contain}
+.links {display:flex;align-items:center;gap:25px;font-size:14px;font-weight:650}
+.links a:hover {color:var(--blue)}
+.btn {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:13px 22px;
+  border-radius:10px;
+  font-weight:750;
+  border:1px solid transparent;
+  transition:.2s;
+}
+.btn:hover {transform:translateY(-2px)}
+.primary {
+  background:linear-gradient(115deg,#087fbd,#13b8d4);
+  color:white;
+  box-shadow:0 10px 26px #008dc52a;
+}
+.outline {border-color:#a6bed0;color:var(--navy);background:#fff}
+.ghost {border-color:#ffffff70;color:#fff}
+.menu {
+  display:none;
+  background:none;
+  border:0;
+  font-size:27px;
+  color:var(--navy);
+  cursor:pointer;
+}
+.hero {
+  background:radial-gradient(circle at 85% 10%,#125985 0,transparent 36%),
+    linear-gradient(130deg,#06172a,#0a2948 65%,#073a56);
+  color:white;
+  overflow:hidden;
+}
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:60px;
+  align-items:center;
+  padding:105px 0 110px;
+}
+.eyebrow {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#46d9e9;
+  font-weight:850;
+}
+.hero h1 {
+  font-size:clamp(38px,5.3vw,66px);
+  line-height:1.12;
+  letter-spacing:-2px;
+  margin:18px 0 25px;
+}
+.hero h1 em {font-style:normal;color:#43d4e8}
+.hero p {font-size:18px;color:#d0dfeb;max-width:670px}
+.actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.hero-panel {
+  border:1px solid #ffffff38;
+  background:#ffffff0d;
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 24px 65px #0004;
+  position:relative;
+}
+.panel-top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #ffffff2d;
+  padding-bottom:18px;
+  margin-bottom:24px;
+}
+.panel-top strong {font-size:18px}
+.pill {
+  font-size:11px;
+  color:#72e5ed;
+  background:#19d0e21a;
+  padding:6px 10px;
+  border-radius:20px;
+}
+.flow {display:grid;gap:14px}
+.flow-card {
+  padding:16px 18px;
+  background:#ffffff13;
+  border:1px solid #ffffff22;
+  border-radius:13px;
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+.flow-card b {font-size:13px;color:#fff}
+.flow-card small {display:block;color:#bcd0df}
+.flow-icon {font-size:23px;width:40px;text-align:center}
+.panel-bottom {margin-top:22px;color:#8edfe9;font-size:13px}
+.trust {
+  background:#f4f9fc;
+  border-bottom:1px solid var(--line);
+  padding:24px 0;
+}
+.trust-inner {display:flex;gap:16px 30px;align-items:center;flex-wrap:wrap}
+.trust-label {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:800;
+  color:var(--muted);
+}
+.trust span:not(.trust-label) {
+  font-weight:750;
+  color:#36516b;
+  font-size:14px;
+}
+section.content {padding:92px 0}
+.section-head {max-width:750px;margin-bottom:42px}
+.section-head.center {text-align:center;margin:0 auto 48px}
+.kicker {
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--blue);
+  font-weight:850;
+}
+h2 {
+  font-size:clamp(30px,3.8vw,44px);
+  line-height:1.18;
+  letter-spacing:-1.2px;
+  margin:12px 0 17px;
+  color:var(--navy);
+}
+.section-head p {font-size:17px;color:var(--muted);margin:0}
+.cards {display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card {
+  padding:29px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:white;
+  box-shadow:0 8px 28px #153b5810;
+  transition:.2s;
+}
+.card:hover {transform:translateY(-5px);box-shadow:0 16px 40px #153b581c}
+.card-icon {
+  display:grid;
+  place-items:center;
+  width:54px;
+  height:54px;
+  border-radius:14px;
+  background:#e8f7fc;
+  color:#087fbd;
+  font-size:25px;
+}
+.card h3 {font-size:20px;line-height:1.3;color:var(--navy);margin:20px 0 12px}
+.card p {color:var(--muted);font-size:15px;margin:0 0 16px}
+.card ul {margin:0;padding-left:18px;font-size:14px;color:#3d556d}
+.card li {margin:5px 0}
+.tint {background:var(--pale)}
+.split {
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:65px;
+  align-items:center;
+}
+.split p {color:var(--muted)}
+.feature-list {display:grid;gap:15px}
+.feature {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px 22px;
+}
+.feature strong {display:block;color:var(--navy);font-size:17px}
+.feature span {color:var(--muted);font-size:14px}
+.dark {background:var(--navy);color:white}
+.dark h2 {color:white}
+.dark .section-head p {color:#b9cddd}
+.steps {display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step {
+  padding:25px;
+  border:1px solid #ffffff25;
+  border-radius:17px;
+  background:#ffffff0a;
+}
+.step .num {font-size:28px;color:#48d5e7;font-weight:850}
+.step h3 {margin:15px 0 8px;font-size:18px}
+.step p {font-size:14px;color:#c3d4e0;margin:0}
+.tags {display:flex;gap:11px;flex-wrap:wrap}
+.tag {
+  padding:9px 16px;
+  border-radius:8px;
+  background:#eaf3f8;
+  color:#254e70;
+  font-size:14px;
+  font-weight:700;
+}
+.cases {display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.case {
+  border-radius:18px;
+  padding:28px;
+  background:#fff;
+  border:1px solid var(--line);
+}
+.case .mini {
+  font-size:12px;
+  text-transform:uppercase;
+  color:var(--blue);
+  font-weight:800;
+  letter-spacing:1px;
+}
+.case h3 {margin:12px 0;color:var(--navy)}
+.case p {color:var(--muted);font-size:15px}
+.contact {
+  background:linear-gradient(125deg,#092441,#0a4b72);
+  color:white;
+  border-radius:26px;
+  padding:65px;
+  text-align:center;
+}
+.contact h2 {color:white}
+.contact p {color:#d0e3f0;max-width:680px;margin:0 auto 27px}
+.contact .btn {margin:5px}
+.footer {background:#061525;color:#afc2d3;padding:35px 0}
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  font-size:14px;
+}
+.footer strong {color:white}
+.footer a:hover {color:white}
+:focus-visible {outline:3px solid #38d6e8;outline-offset:3px}
+section[id] {scroll-margin-top:90px}
+@media(max-width:950px) {
+  .links {
+    display:none;
+    position:absolute;
+    top:82px;
+    left:0;
+    right:0;
+    background:white;
+    padding:20px 5%;
+    border-bottom:1px solid var(--line);
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .links.open {display:flex}
+  .menu {display:block}
+  .nav>.btn {display:none}
+  .hero-grid,.split {grid-template-columns:1fr;gap:35px}
+  .hero-grid {padding:75px 0}
+  .cards,.cases {grid-template-columns:repeat(2,1fr)}
+  .steps {grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px) {
+  .nav {height:72px}
+  .brand img {max-height:60px}
+  .links {top:72px}
+  .hero-grid {padding:62px 0}
+  .hero h1 {letter-spacing:-1px}
+  .hero-panel {padding:20px}
+  .cards,.cases,.steps {grid-template-columns:1fr}
+  section.content {padding:65px 0}
+  .contact {padding:42px 22px}
+  .actions .btn {width:100%}
+  .trust-inner {gap:10px 18px}
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="container navbar">
-      <a href="#" class="logo" aria-label="Accueil Giramundi">
-        <img src="logo.png" alt="Logo Giramundi" />
-      </a>
+<header class="header">
+  <div class="wrap nav">
+    <a class="brand" href="#accueil" aria-label="Giramundi - accueil">
+      <img src="logo.png" alt="Logo Giramundi">
+    </a>
+    <nav class="links" id="navlinks" aria-label="Navigation principale">
+      <a href="#expertises">Expertises</a>
+      <a href="#accompagnement">Accompagnement</a>
+      <a href="#methode">Méthode</a>
+      <a href="#technologies">Technologies</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn primary" href="#contact">Parlons de votre projet ↗</a>
+    <button class="menu" id="menu" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks">☰</button>
+  </div>
+</header>
 
-      <nav>
-        <a href="#solutions">Solutions</a>
-        <a href="#benefices">Bénéfices</a>
-        <a href="#approche">Approche</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <a href="#contact" class="btn btn-primary">Discuter d’un besoin</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Freelance data, automation & reporting</span>
-          <h1>Des solutions simples pour automatiser, piloter et gagner du temps.</h1>
-          <p>
-            Giramundi aide les entreprises à réduire les tâches manuelles, fiabiliser leurs données
-            et créer des reportings clairs pour mieux suivre leur activité au quotidien.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#solutions" class="btn btn-primary">Voir les services</a>
-            <a href="#contact" class="btn btn-outline">Me contacter</a>
-          </div>
-
-          <div class="proof">
-            <div class="proof-card">
-              <strong>Gain de temps</strong>
-              <span>Moins de saisie manuelle et de fichiers dispersés</span>
-            </div>
-            <div class="proof-card">
-              <strong>Clarté</strong>
-              <span>Des indicateurs visibles et exploitables</span>
-            </div>
-            <div class="proof-card">
-              <strong>Action</strong>
-              <span>Des solutions concrètes, rapides à mettre en place</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-panel">
-          <h3>J’interviens sur vos besoins concrets</h3>
-          <ul class="check-list">
-            <li>Automatiser un reporting récurrent</li>
-            <li>Créer un tableau de bord de pilotage</li>
-            <li>Centraliser et fiabiliser vos données</li>
-            <li>Connecter plusieurs outils entre eux</li>
-            <li>Optimiser un processus métier ou documentaire</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section id="solutions">
-      <div class="container">
-        <div class="section-title">
-          <span>Solutions</span>
-          <h2>Des services pensés pour des résultats visibles rapidement</h2>
-          <p>
-            Une approche freelance, directe et opérationnelle : comprendre votre besoin,
-            construire une solution utile, puis vous rendre autonome.
-          </p>
-        </div>
-
-        <div class="services">
-          <article class="service-card">
-            <div class="icon">⚙️</div>
-            <h3>Automatisation des processus</h3>
-            <p>Réduire les tâches répétitives et fluidifier les échanges entre vos outils.</p>
-            <ul>
-              <li>Automatisation des workflows</li>
-              <li>Notifications et synchronisations</li>
-              <li>Réduction des saisies manuelles</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">📊</div>
-            <h3>Reporting & tableaux de bord</h3>
-            <p>Transformer vos données en indicateurs lisibles pour suivre votre activité.</p>
-            <ul>
-              <li>Tableaux de bord de pilotage</li>
-              <li>Suivi des KPI clés</li>
-              <li>Reporting mensuel ou hebdomadaire</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🔄</div>
-            <h3>Intégration de données</h3>
-            <p>Regrouper, organiser et fiabiliser les données issues de plusieurs sources.</p>
-            <ul>
-              <li>Centralisation des informations</li>
-              <li>Nettoyage et structuration</li>
-              <li>Préparation pour reporting</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🗂️</div>
-            <h3>Gestion documentaire</h3>
-            <p>Améliorer la circulation, le traitement et le suivi des documents métier.</p>
-            <ul>
-              <li>Optimisation des circuits documentaires</li>
-              <li>Analyse des processus GED/ECM</li>
-              <li>Accompagnement utilisateurs</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">📈</div>
-            <h3>Analyse KPI & performance</h3>
-            <p>Identifier les indicateurs utiles pour mieux comprendre votre activité.</p>
-            <ul>
-              <li>Suivi ventes, trafic, conversion</li>
-              <li>Analyse des écarts</li>
-              <li>Aide à la décision</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🧭</div>
-            <h3>Optimisation des workflows</h3>
-            <p>Clarifier vos étapes de travail et supprimer les frictions inutiles.</p>
-            <ul>
-              <li>Cartographie de processus</li>
-              <li>Identification des irritants</li>
-              <li>Proposition de solutions simples</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="benefices" class="outcome">
-      <div class="container outcome-grid">
-        <div>
-          <span class="eyebrow">Bénéfices client</span>
-          <h2>Ce que vous gagnez concrètement</h2>
-          <p>
-            L’objectif n’est pas d’ajouter de la complexité, mais de simplifier votre quotidien :
-            moins de tâches manuelles, moins d’erreurs, plus de visibilité et plus de temps pour décider.
-          </p>
-        </div>
-
-        <div class="benefits">
-          <div class="benefit">
-            <strong>Moins de temps perdu</strong>
-            Automatisation des tâches répétitives et réduction des manipulations manuelles.
-          </div>
-          <div class="benefit">
-            <strong>Des données plus fiables</strong>
-            Structuration, nettoyage et centralisation des informations utiles.
-          </div>
-          <div class="benefit">
-            <strong>Une meilleure visibilité</strong>
-            Tableaux de bord clairs pour suivre les indicateurs importants.
-          </div>
-          <div class="benefit">
-            <strong>Une solution adaptée</strong>
-            Des livrables simples, compréhensibles et utilisables par vos équipes.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="approche" class="method">
-      <div class="container">
-        <div class="section-title">
-          <span>Approche</span>
-          <h2>Une méthode simple, structurée et orientée action</h2>
-          <p>
-            Chaque mission commence par vos besoins réels, pas par les outils.
-            Les technologies viennent ensuite pour construire la solution la plus adaptée.
-          </p>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <span>1</span>
-            <h3>Comprendre</h3>
-            <p>Analyse de vos processus, données, irritants et objectifs.</p>
-          </div>
-          <div class="step">
-            <span>2</span>
-            <h3>Structurer</h3>
-            <p>Définition des indicateurs, flux, règles et priorités.</p>
-          </div>
-          <div class="step">
-            <span>3</span>
-            <h3>Construire</h3>
-            <p>Mise en place du reporting, de l’automatisation ou de l’intégration.</p>
-          </div>
-          <div class="step">
-            <span>4</span>
-            <h3>Transmettre</h3>
-            <p>Documentation, accompagnement et autonomie des utilisateurs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="secteurs">
-      <div class="container">
-        <div class="section-title">
-          <span>Secteurs & cas d’usage</span>
-          <h2>Des solutions adaptées aux besoins opérationnels</h2>
-          <p>
-            Les services Giramundi s’adaptent aux PME, indépendants, équipes commerciales,
-            directions opérationnelles, services support et organisations en transformation.
-          </p>
-        </div>
-
-        <div class="sectors">
-          <div class="sector">PME & TPE</div>
-          <div class="sector">Services commerciaux</div>
-          <div class="sector">Marketing & digital</div>
-          <div class="sector">Gestion documentaire</div>
-          <div class="sector">Reporting direction</div>
-          <div class="sector">Opérations</div>
-          <div class="sector">CRM & relation client</div>
-          <div class="sector">Support métier</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="cta">
-          <h2>Un reporting trop manuel ? Des données dispersées ? Des processus à fluidifier ?</h2>
-          <p>
-            Parlons de vos objectifs et identifions les automatisations, tableaux de bord
-            ou flux de données qui peuvent générer rapidement de la valeur.
-          </p>
-          <a href="mailto:contact@giramundi.com" class="btn btn-primary">contact@giramundi.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <strong>Giramundi</strong><br />
-        Data • Digital • Performance
-      </div>
-      <div>
-        © 2026 Giramundi. Tous droits réservés.
+<main>
+<section class="hero" id="accueil">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Conseil IT • CRM • Transformation digitale</div>
+      <h1>Connecter vos outils.<br><em>Simplifier vos processus.</em><br>Accélérer vos projets.</h1>
+      <p>Giramundi accompagne les entreprises dans l'analyse de leurs besoins, l'évolution de leur CRM Microsoft Dynamics 365, l'automatisation des processus et l'intégration de leurs données et solutions documentaires.</p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Échanger sur votre besoin ↗</a>
+        <a class="btn ghost" href="#expertises">Découvrir nos expertises ↓</a>
       </div>
     </div>
-  </footer>
+    <div class="hero-panel" aria-label="Domaines d'intervention">
+      <div class="panel-top">
+        <strong>Votre écosystème digital</strong>
+        <span class="pill">Conseil & intégration</span>
+      </div>
+      <div class="flow">
+        <div class="flow-card">
+          <span class="flow-icon">◈</span>
+          <div><b>Dynamics 365 CRM</b><small>Sales • Customer Service • Dataverse</small></div>
+        </div>
+        <div class="flow-card">
+          <span class="flow-icon">⚡</span>
+          <div><b>Power Platform & Data</b><small>Power Apps • Power Automate • Power BI</small></div>
+        </div>
+        <div class="flow-card">
+          <span class="flow-icon">▤</span>
+          <div><b>GED / ECM & intégrations</b><small>Flux documentaires • Migration • API / ETL</small></div>
+        </div>
+      </div>
+      <div class="panel-bottom">De l'expression du besoin à la mise en production.</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap trust-inner">
+    <span class="trust-label">Domaines de compétence</span>
+    <span>Microsoft Dynamics 365</span>
+    <span>Power Platform</span>
+    <span>Business Analysis</span>
+    <span>GED / ECM</span>
+    <span>Data & intégration</span>
+  </div>
+</div>
+
+<section class="content" id="expertises">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="kicker">Nos expertises</div>
+      <h2>Des compétences complémentaires au service de votre transformation</h2>
+      <p>Un accompagnement fonctionnel et technique pour faire évoluer vos applications, fluidifier les échanges de données et améliorer l'expérience de vos équipes.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-icon">◈</div>
+        <h3>Microsoft Dynamics 365 CRM</h3>
+        <p>Analyse, évolution et intégration de vos processus de vente et de relation client.</p>
+        <ul>
+          <li>Dynamics 365 Sales & Customer Service</li>
+          <li>Dataverse, formulaires et règles métiers</li>
+          <li>Parcours utilisateurs et processus CRM</li>
+          <li>Interfaces avec les systèmes tiers</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">◇</div>
+        <h3>Business Analysis & AMOA</h3>
+        <p>Faire le lien entre vos enjeux métiers et les équipes chargées de la réalisation.</p>
+        <ul>
+          <li>Ateliers et recueil des besoins</li>
+          <li>Cartographie des processus</li>
+          <li>Spécifications et user stories</li>
+          <li>Tests fonctionnels et recette UAT</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Power Platform & automatisation</h3>
+        <p>Digitaliser les opérations et limiter les tâches manuelles grâce à l'écosystème Microsoft.</p>
+        <ul>
+          <li>Power Apps et Dataverse</li>
+          <li>Power Automate et workflows</li>
+          <li>Règles de gestion et validations</li>
+          <li>Automatisation des échanges</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">▤</div>
+        <h3>Gestion documentaire & ECM</h3>
+        <p>Structurer vos documents et simplifier leur circulation au sein de l'entreprise.</p>
+        <ul>
+          <li>GED / ECM et dématérialisation</li>
+          <li>Workflows documentaires</li>
+          <li>Facturation électronique</li>
+          <li>Intégration documentaire avec le CRM</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">⇄</div>
+        <h3>Intégration & migration de données</h3>
+        <p>Fiabiliser les échanges entre applications et sécuriser les transformations de données.</p>
+        <ul>
+          <li>Mapping et synchronisation</li>
+          <li>ETL, API et flux inter-applicatifs</li>
+          <li>Nettoyage et contrôles qualité</li>
+          <li>Tests et validation des migrations</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">▥</div>
+        <h3>Reporting & pilotage Power BI</h3>
+        <p>Rendre les informations exploitables pour suivre la performance et prendre des décisions.</p>
+        <ul>
+          <li>Définition des KPI</li>
+          <li>Power BI et tableaux de bord</li>
+          <li>Modélisation et préparation des données</li>
+          <li>Reporting opérationnel</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="content tint" id="accompagnement">
+  <div class="wrap split">
+    <div>
+      <div class="kicker">Notre valeur ajoutée</div>
+      <h2>Un partenaire à l'interface des métiers et de l'IT</h2>
+      <p>Un projet digital réussi ne se résume pas au choix d'un outil. Il commence par une compréhension précise de vos processus, de vos utilisateurs et de vos contraintes techniques.</p>
+      <p>Giramundi intervient sur les étapes clés de vos projets : cadrage, conception fonctionnelle, coordination des intégrations, qualité des données, recette et accompagnement au changement.</p>
+      <a href="#contact" class="btn outline">Présenter votre projet ↗</a>
+    </div>
+    <div class="feature-list">
+      <div class="feature"><strong>01 — Comprendre les enjeux métiers</strong><span>Analyser l'existant, identifier les irritants et formaliser les objectifs.</span></div>
+      <div class="feature"><strong>02 — Concevoir des solutions cohérentes</strong><span>Aligner processus, CRM, applications et données autour des usages réels.</span></div>
+      <div class="feature"><strong>03 — Sécuriser la qualité des livrables</strong><span>Définir les scénarios de tests, piloter la recette et traiter les anomalies.</span></div>
+      <div class="feature"><strong>04 — Favoriser l'adoption</strong><span>Documenter, former et accompagner les utilisateurs lors du déploiement.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="content dark" id="methode">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Notre méthode</div>
+      <h2>Une démarche claire, de l'idée au déploiement</h2>
+      <p>Des interventions adaptées à la maturité de votre organisation et à l'avancement de votre projet.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Diagnostiquer</h3><p>Échanges avec les parties prenantes, analyse de l'existant et identification des priorités.</p></div>
+      <div class="step"><div class="num">02</div><h3>Concevoir</h3><p>Formalisation des besoins, processus cibles, spécifications et règles de gestion.</p></div>
+      <div class="step"><div class="num">03</div><h3>Valider</h3><p>Coordination des réalisations, vérification des flux, tests et recette métier.</p></div>
+      <div class="step"><div class="num">04</div><h3>Accompagner</h3><p>Préparation du déploiement, documentation, formation et amélioration continue.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="technologies">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Écosystème technologique</div>
+      <h2>Des outils adaptés à vos besoins métiers</h2>
+      <p>Une expertise transverse des solutions Microsoft, des plateformes documentaires et des technologies d'intégration.</p>
+    </div>
+    <div class="tags">
+      <span class="tag">Dynamics 365 Sales</span>
+      <span class="tag">Dynamics 365 Customer Service</span>
+      <span class="tag">Dataverse</span>
+      <span class="tag">Power Apps</span>
+      <span class="tag">Power Automate</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">SQL Server</span>
+      <span class="tag">Talend ETL</span>
+      <span class="tag">REST API</span>
+      <span class="tag">C# / .NET</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">GED / ECM</span>
+      <span class="tag">Youdoc</span>
+      <span class="tag">ELO</span>
+      <span class="tag">DocuWare</span>
+      <span class="tag">Agile / Scrum</span>
+    </div>
+  </div>
+</section>
+
+<section class="content tint" id="cas-usage">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="kicker">Cas d'usage</div>
+      <h2>Des problématiques concrètes, des réponses opérationnelles</h2>
+      <p>Quelques exemples de sujets sur lesquels Giramundi peut vous accompagner.</p>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <div class="mini">CRM & relation client</div>
+        <h3>Faire dialoguer CRM et GED</h3>
+        <p>Définir les règles de correspondance des comptes, contacts et documents pour rendre l'information accessible depuis le CRM.</p>
+      </article>
+      <article class="case">
+        <div class="mini">Processus & automatisation</div>
+        <h3>Fluidifier les circuits de validation</h3>
+        <p>Cartographier les étapes, identifier les tâches répétitives et concevoir des workflows plus simples et traçables.</p>
+      </article>
+      <article class="case">
+        <div class="mini">Données & qualité</div>
+        <h3>Sécuriser une migration</h3>
+        <p>Préparer le mapping, contrôler la cohérence des données et construire les scénarios de validation avant mise en service.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="eyebrow">Parlons de votre projet</div>
+      <h2>Un projet CRM, data ou transformation digitale ?</h2>
+      <p>Besoin d'un accompagnement ponctuel ou d'un renfort sur une mission ? Échangeons sur vos objectifs, votre contexte et les prochaines étapes.</p>
+      <a class="btn primary" href="mailto:contact@giramundi.com?subject=Demande%20de%20contact%20-%20Giramundi">Écrire à Giramundi ↗</a>
+      <p style="font-size:14px;margin-top:16px">contact@giramundi.com</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Giramundi</strong>
+      <div>Conseil IT • CRM • Data • Transformation digitale</div>
+    </div>
+    <div>© <span id="year">2026</span> Giramundi. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script>
+const menu=document.getElementById('menu');
+const links=document.getElementById('navlinks');
+
+menu.addEventListener('click',()=>{
+  const open=links.classList.toggle('open');
+  menu.setAttribute('aria-expanded',String(open));
+  menu.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+});
+
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  links.classList.remove('open');
+  menu.setAttribute('aria-expanded','false');
+}));
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
